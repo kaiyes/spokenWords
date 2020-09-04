@@ -51,7 +51,7 @@ function Card({title, subTitle, pic, index, pageNumber}) {
 					<Text style={styles.header}>{title}</Text>
 					<Text style={styles.subTitle}>{subTitle}</Text>
 				</View>
-				<TouchableOpacity onPress={() => console.log(index, number)}>
+				<TouchableOpacity onPress={() => console.log('s')}>
 					<Text style={styles.skipText}>Skip</Text>
 				</TouchableOpacity>
 			</View>
