@@ -5,7 +5,8 @@ import {
 	Text,
 	StyleSheet,
 	ImageBackground,
-	TextInput
+	TextInput,
+	TouchableOpacity
 } from 'react-native'
 import {
 	widthPercentageToDP as wp,
@@ -29,21 +30,30 @@ export default function App() {
 
 			<View style={styles.formContainer}>
 				<Text style={styles.label}>Name</Text>
-				<TextInput
-					onChangeText={text => setName(text)}
-					value={name}
-					style={styles.textInput}
-				/>
+				<View style={styles.inputHolder}>
+					<TextInput
+						onChangeText={text => setName(text)}
+						value={name}
+						style={styles.textInput}
+						placeholder={' name'}
+					/>
+				</View>
 
 				<View style={styles.spacerV}></View>
 				<Text style={styles.label}>Email</Text>
-				<TextInput
-					onChangeText={text => setEmail(text)}
-					value={email}
-					style={styles.textInput}
-					placeholder={' ds@example.com'}
-				/>
+				<View style={styles.inputHolder}>
+					<TextInput
+						onChangeText={text => setEmail(text)}
+						value={email}
+						style={styles.textInput}
+						placeholder={' ds@example.com'}
+					/>
+				</View>
 			</View>
+
+			<TouchableOpacity style={styles.button} onPress={() => console.log('s')}>
+				<Text style={styles.buttonText}>Get Started</Text>
+			</TouchableOpacity>
 		</ImageBackground>
 	)
 }
@@ -79,11 +89,12 @@ const styles = StyleSheet.create({
 		borderRadius: wp('1%'),
 		borderWidth: 1,
 		borderColor: 'silver',
-		paddingLeft: wp('2%')
+		paddingLeft: wp('2%'),
+		backgroundColor: 'white'
 	},
 	formContainer: {
 		marginTop: hp('5%'),
-		paddingHorizontal: wp('13%')
+		paddingHorizontal: wp('12%')
 	},
 	label: {
 		fontSize: 12,
@@ -91,5 +102,27 @@ const styles = StyleSheet.create({
 	},
 	spacerV: {
 		height: hp('3%')
+	},
+	inputHolder: {
+		shadowColor: 'black',
+		shadowOffset: { width: 2, height: 1 },
+		shadowOpacity: 0.3,
+		shadowRadius: 3,
+		elevation: 2
+	},
+	button: {
+		backgroundColor: '#f4c136',
+		borderRadius: wp('7%'),
+		marginTop: hp('10%'),
+		shadowColor: '#000',
+		shadowOffset: { width: 0, height: 3 },
+		shadowOpacity: 0.37,
+		shadowRadius: 3,
+		elevation: 8
+	},
+	buttonText: {
+		color: 'white',
+		paddingHorizontal: wp('14%'),
+		paddingVertical: hp('1.5%')
 	}
 })
