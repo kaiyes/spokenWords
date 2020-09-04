@@ -19,7 +19,7 @@ export default function App() {
 
 	return (
 		<ImageBackground
-			source={require('./src/assets/background.png')}
+			source={require('../assets/background.png')}
 			style={styles.container}>
 			<View style={styles.headerContainer}>
 				<Text style={styles.header}>Hello!</Text>
