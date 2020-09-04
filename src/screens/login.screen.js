@@ -58,26 +58,30 @@ export default function App() {
 						placeholder={' ds@example.com'}
 					/>
 				</View>
+
+				<View style={styles.spacerV}></View>
+
+				<Text style={styles.label}>Subtitles</Text>
+				<Text style={styles.subtitle}>
+					Choose a language for your auto translate subtitles.{' '}
+				</Text>
+				<Menu>
+					<MenuTrigger>
+						<View style={styles.menuTrigger}>
+							<Text style={styles.triggerText}>Select a language</Text>
+						</View>
+					</MenuTrigger>
+					<MenuOptions>
+						<MenuOption onSelect={() => console.log('s')}>
+							{options.map(item => (
+								<Text key={item} style={styles.subTitle}>
+									{item}
+								</Text>
+							))}
+						</MenuOption>
+					</MenuOptions>
+				</Menu>
 			</View>
-
-			<View style={styles.spacerV}></View>
-
-			<Menu>
-				<MenuTrigger>
-					<View style={styles.menuTrigger}>
-						<Text style={styles.triggerText}>Select a language</Text>
-					</View>
-				</MenuTrigger>
-				<MenuOptions>
-					<MenuOption onSelect={() => console.log(item)}>
-						{options.map(item => (
-							<Text key={item} style={styles.subTitle}>
-								{item}
-							</Text>
-						))}
-					</MenuOption>
-				</MenuOptions>
-			</Menu>
 
 			<TouchableOpacity style={styles.button} onPress={() => console.log('s')}>
 				<Text style={styles.buttonText}>Get Started</Text>
@@ -150,12 +154,15 @@ const styles = StyleSheet.create({
 	},
 	buttonText: {
 		color: 'white',
+		fontSize: 18,
+		fontWeight: '500',
 		paddingHorizontal: wp('14%'),
 		paddingVertical: hp('1.5%')
 	},
 	menuTrigger: {
 		width: wp('77%'),
 		backgroundColor: 'white',
+		borderRadius: wp('1%'),
 		shadowColor: '#000',
 		shadowOffset: { width: 0, height: 3 },
 		shadowOpacity: 0.37,
@@ -168,5 +175,10 @@ const styles = StyleSheet.create({
 		color: '#96a0a9',
 		paddingVertical: hp('2%'),
 		paddingLeft: wp('3%')
+	},
+	subtitle: {
+		color: '#96a0a9',
+		fontSize: 10,
+		marginBottom: hp('1%')
 	}
 })
