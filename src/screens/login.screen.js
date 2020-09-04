@@ -12,6 +12,14 @@ import {
 	widthPercentageToDP as wp,
 	heightPercentageToDP as hp
 } from 'react-native-responsive-screen'
+import {
+	Menu,
+	MenuOptions,
+	MenuOption,
+	MenuTrigger
+} from 'react-native-popup-menu'
+
+const options = ['English', 'Japanese']
 
 export default function App() {
 	const [name, setName] = useState('')
@@ -40,6 +48,7 @@ export default function App() {
 				</View>
 
 				<View style={styles.spacerV}></View>
+
 				<Text style={styles.label}>Email</Text>
 				<View style={styles.inputHolder}>
 					<TextInput
@@ -50,6 +59,25 @@ export default function App() {
 					/>
 				</View>
 			</View>
+
+			<View style={styles.spacerV}></View>
+
+			<Menu>
+				<MenuTrigger>
+					<View style={styles.menuTrigger}>
+						<Text style={styles.triggerText}>Select a language</Text>
+					</View>
+				</MenuTrigger>
+				<MenuOptions>
+					<MenuOption onSelect={() => console.log(item)}>
+						{options.map(item => (
+							<Text key={item} style={styles.subTitle}>
+								{item}
+							</Text>
+						))}
+					</MenuOption>
+				</MenuOptions>
+			</Menu>
 
 			<TouchableOpacity style={styles.button} onPress={() => console.log('s')}>
 				<Text style={styles.buttonText}>Get Started</Text>
@@ -124,5 +152,21 @@ const styles = StyleSheet.create({
 		color: 'white',
 		paddingHorizontal: wp('14%'),
 		paddingVertical: hp('1.5%')
+	},
+	menuTrigger: {
+		width: wp('77%'),
+		backgroundColor: 'white',
+		shadowColor: '#000',
+		shadowOffset: { width: 0, height: 3 },
+		shadowOpacity: 0.37,
+		shadowRadius: 3,
+		elevation: 8
+	},
+	triggerText: {
+		fontSize: 16,
+		// fontFamily: 'CantataOne',
+		color: '#96a0a9',
+		paddingVertical: hp('2%'),
+		paddingLeft: wp('3%')
 	}
 })
